@@ -7,9 +7,6 @@ package com.dain.demo_api.controller; //controller 역할을 담당
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.http.HttpStatus;
 //이 클래스는 HTTP 요청을 처리하는 컨트롤러고, GET 요청을 받을 거야
 
 import com.dain.demo_api.dto.HelloResponse;
@@ -17,7 +14,6 @@ import com.dain.demo_api.service.ExperienceService;
 //HelloResponse DTO를 가져온다는 뜻.
 //데이터를 직접 정의x, DTO 클래스를 통해 구조화된 데이터를 반환하는 것
 
-import java.util.Map;
 
 @RestController // REST API 전용 컨트롤러
 public class ExperienceController {
@@ -41,15 +37,6 @@ public class ExperienceController {
         
     }
     
-
-@ExceptionHandler(IllegalArgumentException.class)
-@ResponseStatus(HttpStatus.BAD_REQUEST)
-public Map<String, String> handleIllegalArgument(IllegalArgumentException e) {
-    return Map.of(
-        "error", "BAD_REQUEST",
-        "message", e.getMessage()
-    );
-  }
 }
 
 
@@ -57,10 +44,10 @@ public Map<String, String> handleIllegalArgument(IllegalArgumentException e) {
 // <구조>
 //브라우저
 //  ↓ GET /hello
-//ExperienceController
-//  ↓ HelloResponse 객체 생성
-//Spring (Jackson)
-//  ↓ JSON 변환
+//Controller
+//  ↓ 예외발생
+//GlobalExceptionHandler
+//  ↓ JSON 응답 에러
 //브라우저
 
 // <설명>
