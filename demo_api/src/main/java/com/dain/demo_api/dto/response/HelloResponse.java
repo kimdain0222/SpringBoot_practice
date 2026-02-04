@@ -1,4 +1,4 @@
-package com.dain.demo_api.dto;
+package com.dain.demo_api.dto.response;
 
 public class HelloResponse {    //DTO 클래스 시작
 

@@ -1,7 +1,8 @@
 package com.dain.demo_api.service;
 
 import org.springframework.stereotype.Service;
-import com.dain.demo_api.dto.HelloResponse;
+
+import com.dain.demo_api.dto.response.HelloResponse;
 
 @Service
 public class ExperienceService {

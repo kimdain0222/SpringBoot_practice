@@ -9,10 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import jakarta.validation.Valid;
 
-// DTO import
-import com.dain.demo_api.dto.HelloRequest;
-import com.dain.demo_api.dto.HelloResponse;
-
+import com.dain.demo_api.dto.common.ApiResponse;
+import com.dain.demo_api.dto.request.HelloRequest;
+import com.dain.demo_api.dto.response.HelloResponse;
 // Service import
 import com.dain.demo_api.service.ExperienceService;
 
@@ -31,10 +30,11 @@ public class ExperienceController {
 
     // "/hello" 경로로 들어오는 GET 요청 처리
     @GetMapping("/hello")
-    public HelloResponse hello(@Valid HelloRequest request) {
-        // 실제 데이터 생성 로직은 Service 계층에 위임
-        return experienceService.getHelloMessage(request.getName());
-    }
+    public ApiResponse<HelloResponse> hello(@Valid HelloRequest request) {
+        HelloResponse response = experienceService.getHelloMessage(request.getName());
+        return new ApiResponse<>(response);
+}
+
 }
 
 

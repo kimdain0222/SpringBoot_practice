@@ -1,4 +1,4 @@
-package com.dain.demo_api.dto;
+package com.dain.demo_api.dto.request;
 
 import jakarta.validation.constraints.NotBlank;
 
