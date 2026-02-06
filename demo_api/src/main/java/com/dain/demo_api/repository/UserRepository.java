@@ -1,9 +1,11 @@
 package com.dain.demo_api.repository;
 
+import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import com.dain.demo_api.entity.User;
 
 public interface UserRepository extends JpaRepository<User, Long> {
+    Optional<User> findByEmail(String email);
 }
 
 // Repository는 Entity와 DB 사이의 데이터 접근 담당
